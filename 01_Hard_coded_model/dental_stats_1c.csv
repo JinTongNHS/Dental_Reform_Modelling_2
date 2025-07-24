@@ -1,0 +1,8 @@
+"Table_1c: Courses of treatment by treatment band, patient type and financial year, England 2019/2020 to 2023/2024",,,,,,,,,,,
+Notes,,,,,,,,,,,
+1. Some cells in this table are empty because data was not available for the time period.  Band 2 sub-bands were introduced for treatment with a date of acceptance on or after 25 November 2022.,,,,,,,,,,,
+"2. Patient type can be exempt, non-exempt, or child. A child is classed as being aged 17 or under at the time that treatment starts. Exempt patients do not pay patient charges towards their treatment, but do not have an age exemption.",,,,,,,,,,,
+Financial Year,Patient Type,Band 1,Band 2,Band 2a,Band 2b,Band 2c,Band 3,Urgent,Free,Regulation 11 Replacement Appliance,Total
+2023/2024,Child,8036346,9616,1747315,721722,11458,72506,550096,2534,,11151593
+2023/2024,Exempt,1705830,8699,1448209,463415,26022,713055,1080406,29,2,5445667
+2023/2024,Non-Exempt,10257374,17816,3429662,976474,74739,599794,2044229,109484,9428,17519000

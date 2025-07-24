@@ -1,0 +1,4 @@
+HN Patient Distribution,,
+,%patients falling into pathway 1,%patients falling into pathway 2
+Without labs,0.4967,0.1632
+With labs,0.2169,0.1232
