@@ -21,7 +21,9 @@ get_Var<-function(Parameter_ID="1"){
 
 
 #define function to extract testing inputs for patient segments
-#seg_input<-read.xlsx("02_Model_4_testing/Model_inputs.xlsx", sheet = "Patient_Segment", startRow = 3)
+seg_input<-read.xlsx("02_Model_4_testing/Model_inputs.xlsx", sheet = "Patient_Segment", startRow = 3)
+
+#Excel [Scenario_tested.xlsx] contains all scenarios tested in orinigal excel model
 #seg_input<-read.xlsx("Scenario_tested.xlsx", sheet = "All policies", startRow = 3)
 #seg_input<-read.xlsx("Scenario_tested.xlsx", sheet = "HN perio", startRow = 3)
 #seg_input<-read.xlsx("Scenario_tested.xlsx", sheet = "HN caries", startRow = 3)
@@ -29,7 +31,7 @@ get_Var<-function(Parameter_ID="1"){
 #seg_input<-read.xlsx("Scenario_tested.xlsx", sheet = "FissureSealants", startRow = 3)
 #seg_input<-read.xlsx("Scenario_tested.xlsx", sheet = "Urgent Care", startRow = 3)
 #seg_input<-read.xlsx("Scenario_tested.xlsx", sheet = "Everything else", startRow = 3)
-seg_input<-read.xlsx("Scenario_tested.xlsx", sheet = "All high needs", startRow = 3)
+#seg_input<-read.xlsx("Scenario_tested.xlsx", sheet = "All high needs", startRow = 3)
 
 seg<-unique(seg_input$Seg_short)
 model<-unique(seg_input$Model)

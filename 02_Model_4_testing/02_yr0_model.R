@@ -88,16 +88,29 @@ get_yr0_post_model<-function(){
     left_join(subset(get_yr0_pre_model()%>%filter(Seg_short !="Unused_UDA"), select=c(Seg_short, `Total_spend_%`)), "Seg_short")%>%
     collect()
 
-  #first check if urgent patient segment is affected - if yes, re-calculate urgent %, otherwise keep premodel values
-  data<- seg_input%>%
-    filter(Seg_short=="urgent")
-  if(data$COT[data$`Model`== "post-model"] !=data$COT[data$`Model`== "pre-model"])
-  {model$`Total_spend_%`[model$`Seg_short`== "urgent"]= (model$`COT`[model$`Seg_short`== "urgent"]* model$`Cost_per_COT`[model$`Seg_short`== "urgent"]/commisioned_spend)}
-  else{}
-  
-    model$`Total_spend_%`[model$`Seg_short`== "perio"]= (model$`COT`[model$`Seg_short`== "perio"]* model$`Cost_per_COT`[model$`Seg_short`== "perio"]/commisioned_spend)
-    model$`Total_spend_%`[model$`Seg_short`== "new_hn_pat"]= (model$`COT`[model$`Seg_short`== "new_hn_pat"]* model$`Cost_per_COT`[model$`Seg_short`== "new_hn_pat"]/commisioned_spend)
+  #first check if a patient segment is affected - if yes, re-calculate total spend %, otherwise keep pre-model values
+  for (s in (1:length(seg))){
     
+    data<- seg_input%>%
+      filter(Seg_short==seg[s])
+    
+    if(data$COT[data$`Model`== "post-model"] !=data$COT[data$`Model`== "pre-model"])
+    {model$`Total_spend_%`[model$`Seg_short`== seg[s]]= (model$`COT`[model$`Seg_short`== seg[s]]* model$`Cost_per_COT`[model$`Seg_short`== seg[s]]/commisioned_spend)}
+    else if(data$`Cost_per_COT`[data$`Model`== "post-model"] !=data$`Cost_per_COT`[data$`Model`== "pre-model"])   
+      {model$`Total_spend_%`[model$`Seg_short`== seg[s]]= (model$`COT`[model$`Seg_short`== seg[s]]* model$`Cost_per_COT`[model$`Seg_short`== seg[s]]/commisioned_spend)}
+    else {}
+    
+  }
+  
+  # data<- seg_input%>%
+  #   filter(Seg_short=="urgent")
+  # if(data$COT[data$`Model`== "post-model"] !=data$COT[data$`Model`== "pre-model"])
+  # {model$`Total_spend_%`[model$`Seg_short`== "urgent"]= (model$`COT`[model$`Seg_short`== "urgent"]* model$`Cost_per_COT`[model$`Seg_short`== "urgent"]/commisioned_spend)}
+  # else{}
+  # 
+  #   model$`Total_spend_%`[model$`Seg_short`== "perio"]= (model$`COT`[model$`Seg_short`== "perio"]* model$`Cost_per_COT`[model$`Seg_short`== "perio"]/commisioned_spend)
+  #   model$`Total_spend_%`[model$`Seg_short`== "new_hn_pat"]= (model$`COT`[model$`Seg_short`== "new_hn_pat"]* model$`Cost_per_COT`[model$`Seg_short`== "new_hn_pat"]/commisioned_spend)
+  #   
   
   unused_uda_post=1-sum(as.numeric(model$`Total_spend_%`), na.rm=T)
   model[nrow(model) + 1, ] <- c(m ,"Unused_UDA","" ,"" ,"","","", unused_uda_post)

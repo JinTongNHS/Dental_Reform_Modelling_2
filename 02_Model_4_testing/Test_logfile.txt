@@ -170,3 +170,53 @@ INFO  [2025-07-28 16:41:34] Assuming inflation from 2027/28: 1.043
 INFO  [2025-07-28 16:41:34] Please refer to [Input_for_test.xlsx] to view full list of inputs that have been used in this test.
 
 INFO  [2025-07-28 16:41:34] Test end !!!! Outputs from this test is saved in [Model_outputs.xlsx]
+INFO  [2025-07-29 14:31:56] ---------------------------------------------------------------------
+INFO  [2025-07-29 14:31:56] Inputs/Assumptions used in this test -----
+
+INFO  [2025-07-29 14:31:56] Commissioned UDA:  81,404,347
+INFO  [2025-07-29 14:31:56] Commissioned spend:  £2,767,747,798
+INFO  [2025-07-29 14:31:56] Projected UDA:  71,729,056
+INFO  [2025-07-29 14:31:56] Average £ per UDA:  34
+INFO  [2025-07-29 14:31:56] FY used for total UDA delivery:  2023/2024
+INFO  [2025-07-29 14:31:56] Total UDA delivery in selected FY:  72,502,209
+
+INFO  [2025-07-29 14:31:56] Scenario tested in post-model:  All policies scenario-----
+INFO  [2025-07-29 14:31:56] Impacts on [urgent] segment, changing COT from 3351516 to 4051516; 
+
+INFO  [2025-07-29 14:31:56] Impacts on [new_hn_pat] segment, changing PCR fee per COT from £70.3 to £68.4; 
+
+INFO  [2025-07-29 14:31:56] Impacts on [new_hn_pat] segment, changing average cost per COT from £342 to £527.6; 
+Impacts on [perio] segment, changing average cost per COT from £102 to £238; 
+Impacts on [urgent] segment, changing average cost per COT from £40.8 to £75; 
+
+INFO  [2025-07-29 14:31:56] Behaviours changes applied to 10 years: 
+INFO  [2025-07-29 14:31:56] Assuming % new band 2/3 that are normal: 40%
+INFO  [2025-07-29 14:31:56] Assuming % of unmodelled activities: 3%
+INFO  [2025-07-29 14:31:56] Assuming inflation from 2027/28: 1.043
+
+INFO  [2025-07-29 14:31:56] Please refer to [Input_for_test.xlsx] to view full list of inputs that have been used in this test.
+
+INFO  [2025-07-29 14:31:56] Test end !!!! Outputs from this test is saved in [Model_outputs.xlsx]
+INFO  [2025-07-29 14:43:07] ---------------------------------------------------------------------
+INFO  [2025-07-29 14:43:07] Inputs/Assumptions used in this test -----
+
+INFO  [2025-07-29 14:43:07] Commissioned UDA:  81,404,347
+INFO  [2025-07-29 14:43:07] Commissioned spend:  £2,767,747,798
+INFO  [2025-07-29 14:43:07] Projected UDA:  71,729,056
+INFO  [2025-07-29 14:43:07] Average £ per UDA:  34
+INFO  [2025-07-29 14:43:07] FY used for total UDA delivery:  2023/2024
+INFO  [2025-07-29 14:43:07] Total UDA delivery in selected FY:  72,502,209
+
+INFO  [2025-07-29 14:43:07] Scenario tested in post-model:  High needs perio scenario-----
+INFO  [2025-07-29 14:43:08] 
+INFO  [2025-07-29 14:43:08] 
+INFO  [2025-07-29 14:43:08] Impacts on [perio] segment, changing average cost per COT from £102 to £238; 
+
+INFO  [2025-07-29 14:43:08] Behaviours changes applied to 10 years: 
+INFO  [2025-07-29 14:43:08] Assuming % new band 2/3 that are normal: 40%
+INFO  [2025-07-29 14:43:08] Assuming % of unmodelled activities: 3%
+INFO  [2025-07-29 14:43:08] Assuming inflation from 2027/28: 1.043
+
+INFO  [2025-07-29 14:43:08] Please refer to [Input_for_test.xlsx] to view full list of inputs that have been used in this test.
+
+INFO  [2025-07-29 14:43:08] Test end !!!! Outputs from this test is saved in [Model_outputs.xlsx]
