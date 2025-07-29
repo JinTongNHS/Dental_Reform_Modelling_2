@@ -1,3 +1,5 @@
+#This script produces/update a log file recording all key inputs/assumptions used in each model run (after running [00_run_test.R])
+
 library(log4r)
 library(formattable)
 
@@ -12,7 +14,7 @@ my_logger <- log4r::logger(threshold = "INFO",
 
 log4r_info <- function() {
   log4r::info(my_logger, paste0("---------------------------------------------------------------------"))
-  log4r::info(my_logger, paste0("Inputs/Assumptions used in this test\n"))
+  log4r::info(my_logger, paste0("Inputs/Assumptions used in this test -----\n"))
 
   log4r::info(my_logger, paste0("Commissioned UDA:  ", comma(commisioned_uda, digits=0)))
   log4r::info(my_logger, paste0("Commissioned spend:  £", comma(commisioned_spend, digits=0)))
@@ -21,7 +23,7 @@ log4r_info <- function() {
   log4r::info(my_logger, paste0("FY used for total UDA delivery:  ",FY))
   log4r::info(my_logger, paste0("Total UDA delivery in selected FY:  ",comma(total_uda, digits=0), "\n"))
 
-  log4r::info(my_logger, paste0("Scenario tested in post-model:  ",Scenario_name))
+  log4r::info(my_logger, paste0("Scenario tested in post-model:  ",Scenario_name, "-----"))
   log4r::info(my_logger, get_cot_change())
   log4r::info(my_logger, get_pcr_change())
   log4r::info(my_logger, get_cost_change())

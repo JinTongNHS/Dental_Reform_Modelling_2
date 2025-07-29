@@ -10,11 +10,12 @@ spend_projected_uda=projected_uda*avg_pay_UDA
 unused_uda= 1- as.numeric(get_Var(4)) #unused (%) UDA in 2024/25
 FY=get_Var(5) # FY used for UDA figures from dental stats
 total_uda<- get_uda(FY, "Child", "Total")+get_uda(FY, "non_Child", "Total")
-Scenario_name<-(get_seg_input("post-model",1))$Comments
+Scenario_name<-(get_seg_input("post-model",1))$Comments #Get the short label/name for policy being tested in each run
 
 get_yr0_pre_model<-function(){
   
 m="pre-model"
+
 b_23_name<-c("Band.2", "Band.2a", "Band.2b", "Band.2c", "Band.3") #a label for all band 2 &3
 
 model<-rbind(get_seg_input(m,1), 
@@ -87,7 +88,13 @@ get_yr0_post_model<-function(){
     left_join(subset(get_yr0_pre_model()%>%filter(Seg_short !="Unused_UDA"), select=c(Seg_short, `Total_spend_%`)), "Seg_short")%>%
     collect()
 
-    model$`Total_spend_%`[model$`Seg_short`== "urgent"]= (model$`COT`[model$`Seg_short`== "urgent"]* model$`Cost_per_COT`[model$`Seg_short`== "urgent"]/commisioned_spend)
+  #first check if urgent patient segment is affected - if yes, re-calculate urgent %, otherwise keep premodel values
+  data<- seg_input%>%
+    filter(Seg_short=="urgent")
+  if(data$COT[data$`Model`== "post-model"] !=data$COT[data$`Model`== "pre-model"])
+  {model$`Total_spend_%`[model$`Seg_short`== "urgent"]= (model$`COT`[model$`Seg_short`== "urgent"]* model$`Cost_per_COT`[model$`Seg_short`== "urgent"]/commisioned_spend)}
+  else{}
+  
     model$`Total_spend_%`[model$`Seg_short`== "perio"]= (model$`COT`[model$`Seg_short`== "perio"]* model$`Cost_per_COT`[model$`Seg_short`== "perio"]/commisioned_spend)
     model$`Total_spend_%`[model$`Seg_short`== "new_hn_pat"]= (model$`COT`[model$`Seg_short`== "new_hn_pat"]* model$`Cost_per_COT`[model$`Seg_short`== "new_hn_pat"]/commisioned_spend)
     

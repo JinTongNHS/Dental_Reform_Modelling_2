@@ -1,7 +1,12 @@
-#This file is read all source data file required in this modelling
-#Functions to read each data file are also defined
+#This file read all source data required in this modelling
+### Different data sources are saved as individual tabs in [Model_inputs.xlsx] file, including:
+# 1. [Assumptions] has a list of assumed values used in this model, all can be replaced. Please do not change the [id] column. 
+# 2. [Patient_Segment] tab lists all patients segments covered in this modelling. Column [D] to [F] allow different inputs values to be tested for each segment. 
+# 3. [Behaviour_Change] tab allows inputs to be tested for potential behaviour impacts
+# 4. [Discount_index] can be replaced with latest published figures once available
+# 5. [dental_stats_2c] & [dental_stats_6a] can be replaced with latest published figures once available
 
-#All source data files are saved in [00_Source_data] folder, and can be refreshed/replaced when refreshing the model
+# All source data are extracted using defined functions below
 
 library(tidyverse)
 library(magrittr)
@@ -16,7 +21,16 @@ get_Var<-function(Parameter_ID="1"){
 
 
 #define function to extract testing inputs for patient segments
-seg_input<-read.xlsx("02_Model_4_testing/Model_inputs.xlsx", sheet = "Patient_Segment", startRow = 3)
+#seg_input<-read.xlsx("02_Model_4_testing/Model_inputs.xlsx", sheet = "Patient_Segment", startRow = 3)
+#seg_input<-read.xlsx("Scenario_tested.xlsx", sheet = "All policies", startRow = 3)
+#seg_input<-read.xlsx("Scenario_tested.xlsx", sheet = "HN perio", startRow = 3)
+#seg_input<-read.xlsx("Scenario_tested.xlsx", sheet = "HN caries", startRow = 3)
+#seg_input<-read.xlsx("Scenario_tested.xlsx", sheet = "FluorideVarnish", startRow = 3)
+#seg_input<-read.xlsx("Scenario_tested.xlsx", sheet = "FissureSealants", startRow = 3)
+#seg_input<-read.xlsx("Scenario_tested.xlsx", sheet = "Urgent Care", startRow = 3)
+#seg_input<-read.xlsx("Scenario_tested.xlsx", sheet = "Everything else", startRow = 3)
+seg_input<-read.xlsx("Scenario_tested.xlsx", sheet = "All high needs", startRow = 3)
+
 seg<-unique(seg_input$Seg_short)
 model<-unique(seg_input$Model)
 
@@ -29,7 +43,7 @@ get_seg_input<-function(m="pre-model",s=1){
   
 }
 
-#identify policy changes in input files
+#identify changes in input files - to be used in the log file to record policy changes being tested
 get_cot_change<-function(){
   change<-NULL
   for (s in (1:length(seg))){
@@ -113,4 +127,5 @@ get_behaviour<-function(i=1){
   trend_input
 }
 
+#read latest discount index values
 discount_input<-read.xlsx("02_Model_4_testing/Model_inputs.xlsx", sheet = "Discount_index", startRow = 1)

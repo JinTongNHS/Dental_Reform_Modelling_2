@@ -1,135 +1,172 @@
-INFO  [2025-07-24 12:49:32] ---------------------------------------------------------------------
-INFO  [2025-07-24 12:49:32] Inputs/Assumptions used in this test
+INFO  [2025-07-28 16:36:00] ---------------------------------------------------------------------
+INFO  [2025-07-28 16:36:00] Inputs/Assumptions used in this test -----
 
-INFO  [2025-07-24 12:49:32] Commissioned UDA:  81,404,347
-INFO  [2025-07-24 12:49:32] Commissioned spend:  £2,767,747,798
-INFO  [2025-07-24 12:49:32] Projected UDA:  71,729,056
-INFO  [2025-07-24 12:49:32] Average £ per UDA:  34
-INFO  [2025-07-24 12:49:32] FY used for total UDA delivery:  2023/2024
-INFO  [2025-07-24 12:49:32] Total UDA delivery in selected FY:  72,502,209
+INFO  [2025-07-28 16:36:00] Commissioned UDA:  81,404,347
+INFO  [2025-07-28 16:36:00] Commissioned spend:  £2,767,747,798
+INFO  [2025-07-28 16:36:00] Projected UDA:  71,729,056
+INFO  [2025-07-28 16:36:00] Average £ per UDA:  34
+INFO  [2025-07-28 16:36:00] FY used for total UDA delivery:  2023/2024
+INFO  [2025-07-28 16:36:00] Total UDA delivery in selected FY:  72,502,209
 
-INFO  [2025-07-24 12:49:32] Scenario tested in post-model:  All policies scenario
-INFO  [2025-07-24 12:49:33] Impacts on [urgent] segment, changing COT from 3351516 to 4051516; 
+INFO  [2025-07-28 16:36:00] Scenario tested in post-model:  All policies scenario-----
+INFO  [2025-07-28 16:36:00] Impacts on [urgent] segment, changing COT from 3351516 to 4051516; 
 
-INFO  [2025-07-24 12:49:33] Impacts on [new_hn_pat] segment, changing PCR fee per COT from £70.3 to £68.4; 
+INFO  [2025-07-28 16:36:00] Impacts on [new_hn_pat] segment, changing PCR fee per COT from £70.3 to £68.4; 
 
-INFO  [2025-07-24 12:49:34] Impacts on [new_hn_pat] segment, changing average cost per COT from £342 to £527.6; 
+INFO  [2025-07-28 16:36:01] Impacts on [new_hn_pat] segment, changing average cost per COT from £342 to £527.6; 
 Impacts on [perio] segment, changing average cost per COT from £102 to £238; 
 Impacts on [urgent] segment, changing average cost per COT from £40.8 to £75; 
 
-INFO  [2025-07-24 12:49:34] Behaviours changes applied to 10 years: 
-INFO  [2025-07-24 12:49:34] Assuming % new band 2/3 that are normal: 40%
-INFO  [2025-07-24 12:49:34] Assuming % of unmodelled activities: 3%
-INFO  [2025-07-24 12:49:34] Assuming inflation from 2027/28: 1.043
+INFO  [2025-07-28 16:36:01] Behaviours changes applied to 10 years: 
+INFO  [2025-07-28 16:36:01] Assuming % new band 2/3 that are normal: 40%
+INFO  [2025-07-28 16:36:01] Assuming % of unmodelled activities: 3%
+INFO  [2025-07-28 16:36:01] Assuming inflation from 2027/28: 1.043
 
-INFO  [2025-07-24 12:49:34] Please refer to [Input_for_test.xlsx] to view full list of inputs that have been used in this test.
+INFO  [2025-07-28 16:36:01] Please refer to [Input_for_test.xlsx] to view full list of inputs that have been used in this test.
 
-INFO  [2025-07-24 12:49:34] Test end !!!! Outputs from this test is saved in [Model_outputs.xlsx]
-INFO  [2025-07-24 12:55:17] ---------------------------------------------------------------------
-INFO  [2025-07-24 12:55:17] Inputs/Assumptions used in this test
+INFO  [2025-07-28 16:36:01] Test end !!!! Outputs from this test is saved in [Model_outputs.xlsx]
+INFO  [2025-07-28 16:37:00] ---------------------------------------------------------------------
+INFO  [2025-07-28 16:37:00] Inputs/Assumptions used in this test -----
 
-INFO  [2025-07-24 12:55:17] Commissioned UDA:  81,404,347
-INFO  [2025-07-24 12:55:17] Commissioned spend:  £2,767,747,798
-INFO  [2025-07-24 12:55:17] Projected UDA:  71,729,056
-INFO  [2025-07-24 12:55:17] Average £ per UDA:  34
-INFO  [2025-07-24 12:55:17] FY used for total UDA delivery:  2023/2024
-INFO  [2025-07-24 12:55:17] Total UDA delivery in selected FY:  72,502,209
+INFO  [2025-07-28 16:37:00] Commissioned UDA:  81,404,347
+INFO  [2025-07-28 16:37:00] Commissioned spend:  £2,767,747,798
+INFO  [2025-07-28 16:37:00] Projected UDA:  71,729,056
+INFO  [2025-07-28 16:37:00] Average £ per UDA:  34
+INFO  [2025-07-28 16:37:00] FY used for total UDA delivery:  2023/2024
+INFO  [2025-07-28 16:37:00] Total UDA delivery in selected FY:  72,502,209
 
-INFO  [2025-07-24 12:55:17] Scenario tested in post-model:  All policies scenario
-INFO  [2025-07-24 12:55:17] Impacts on [urgent] segment, changing COT from 3351516 to 4051516; 
+INFO  [2025-07-28 16:37:00] Scenario tested in post-model:  All policies scenario-----
+INFO  [2025-07-28 16:37:00] Impacts on [urgent] segment, changing COT from 3351516 to 4051516; 
 
-INFO  [2025-07-24 12:55:19] Impacts on [new_hn_pat] segment, changing PCR fee per COT from £70.3 to £68.4; 
+INFO  [2025-07-28 16:37:00] Impacts on [new_hn_pat] segment, changing PCR fee per COT from £70.3 to £68.4; 
 
-INFO  [2025-07-24 12:55:19] Impacts on [new_hn_pat] segment, changing average cost per COT from £342 to £527.6; 
+INFO  [2025-07-28 16:37:01] Impacts on [new_hn_pat] segment, changing average cost per COT from £342 to £527.6; 
 Impacts on [perio] segment, changing average cost per COT from £102 to £238; 
 Impacts on [urgent] segment, changing average cost per COT from £40.8 to £75; 
 
-INFO  [2025-07-24 12:55:19] Behaviours changes applied to 10 years: 
-INFO  [2025-07-24 12:55:19] Assuming % new band 2/3 that are normal: 40%
-INFO  [2025-07-24 12:55:19] Assuming % of unmodelled activities: 3%
-INFO  [2025-07-24 12:55:19] Assuming inflation from 2027/28: 1.043
+INFO  [2025-07-28 16:37:01] Behaviours changes applied to 10 years: 
+INFO  [2025-07-28 16:37:01] Assuming % new band 2/3 that are normal: 40%
+INFO  [2025-07-28 16:37:01] Assuming % of unmodelled activities: 3%
+INFO  [2025-07-28 16:37:01] Assuming inflation from 2027/28: 1.043
 
-INFO  [2025-07-24 12:55:19] Please refer to [Input_for_test.xlsx] to view full list of inputs that have been used in this test.
+INFO  [2025-07-28 16:37:01] Please refer to [Input_for_test.xlsx] to view full list of inputs that have been used in this test.
 
-INFO  [2025-07-24 12:55:19] Test end !!!! Outputs from this test is saved in [Model_outputs.xlsx]
-INFO  [2025-07-24 16:06:38] ---------------------------------------------------------------------
-INFO  [2025-07-24 16:06:38] Inputs/Assumptions used in this test
+INFO  [2025-07-28 16:37:01] Test end !!!! Outputs from this test is saved in [Model_outputs.xlsx]
+INFO  [2025-07-28 16:37:32] ---------------------------------------------------------------------
+INFO  [2025-07-28 16:37:32] Inputs/Assumptions used in this test -----
 
-INFO  [2025-07-24 16:06:38] Commissioned UDA:  81,404,347
-INFO  [2025-07-24 16:06:38] Commissioned spend:  £2,767,747,798
-INFO  [2025-07-24 16:06:38] Projected UDA:  71,729,056
-INFO  [2025-07-24 16:06:38] Average £ per UDA:  34
-INFO  [2025-07-24 16:06:38] FY used for total UDA delivery:  2023/2024
-INFO  [2025-07-24 16:06:38] Total UDA delivery in selected FY:  72,502,209
+INFO  [2025-07-28 16:37:32] Commissioned UDA:  81,404,347
+INFO  [2025-07-28 16:37:32] Commissioned spend:  £2,767,747,798
+INFO  [2025-07-28 16:37:32] Projected UDA:  71,729,056
+INFO  [2025-07-28 16:37:32] Average £ per UDA:  34
+INFO  [2025-07-28 16:37:32] FY used for total UDA delivery:  2023/2024
+INFO  [2025-07-28 16:37:32] Total UDA delivery in selected FY:  72,502,209
 
-INFO  [2025-07-24 16:06:38] Scenario tested in post-model:  All policies scenario
-INFO  [2025-07-24 16:06:38] Impacts on [urgent] segment, changing COT from 3351516 to 4051516; 
+INFO  [2025-07-28 16:37:32] Scenario tested in post-model:  High needs perio scenario-----
+INFO  [2025-07-28 16:37:33] 
+INFO  [2025-07-28 16:37:33] 
+INFO  [2025-07-28 16:37:33] Impacts on [perio] segment, changing average cost per COT from £102 to £238; 
 
-INFO  [2025-07-24 16:06:38] Impacts on [new_hn_pat] segment, changing PCR fee per COT from £70.3 to £68.4; 
+INFO  [2025-07-28 16:37:33] Behaviours changes applied to 10 years: 
+INFO  [2025-07-28 16:37:33] Assuming % new band 2/3 that are normal: 40%
+INFO  [2025-07-28 16:37:33] Assuming % of unmodelled activities: 3%
+INFO  [2025-07-28 16:37:33] Assuming inflation from 2027/28: 1.043
 
-INFO  [2025-07-24 16:06:40] Impacts on [new_hn_pat] segment, changing average cost per COT from £342 to £527.6; 
+INFO  [2025-07-28 16:37:33] Please refer to [Input_for_test.xlsx] to view full list of inputs that have been used in this test.
+
+INFO  [2025-07-28 16:37:33] Test end !!!! Outputs from this test is saved in [Model_outputs.xlsx]
+INFO  [2025-07-28 16:38:10] ---------------------------------------------------------------------
+INFO  [2025-07-28 16:38:10] Inputs/Assumptions used in this test -----
+
+INFO  [2025-07-28 16:38:10] Commissioned UDA:  81,404,347
+INFO  [2025-07-28 16:38:10] Commissioned spend:  £2,767,747,798
+INFO  [2025-07-28 16:38:10] Projected UDA:  71,729,056
+INFO  [2025-07-28 16:38:10] Average £ per UDA:  34
+INFO  [2025-07-28 16:38:10] FY used for total UDA delivery:  2023/2024
+INFO  [2025-07-28 16:38:10] Total UDA delivery in selected FY:  72,502,209
+
+INFO  [2025-07-28 16:38:10] Scenario tested in post-model:  High needs caries scenario-----
+INFO  [2025-07-28 16:38:10] 
+INFO  [2025-07-28 16:38:11] Impacts on [new_hn_pat] segment, changing PCR fee per COT from £70.3 to £68.4; 
+
+INFO  [2025-07-28 16:38:11] Impacts on [new_hn_pat] segment, changing average cost per COT from £342 to £527.6; 
+
+INFO  [2025-07-28 16:38:11] Behaviours changes applied to 10 years: 
+INFO  [2025-07-28 16:38:11] Assuming % new band 2/3 that are normal: 40%
+INFO  [2025-07-28 16:38:11] Assuming % of unmodelled activities: 3%
+INFO  [2025-07-28 16:38:11] Assuming inflation from 2027/28: 1.043
+
+INFO  [2025-07-28 16:38:11] Please refer to [Input_for_test.xlsx] to view full list of inputs that have been used in this test.
+
+INFO  [2025-07-28 16:38:11] Test end !!!! Outputs from this test is saved in [Model_outputs.xlsx]
+INFO  [2025-07-28 16:39:24] ---------------------------------------------------------------------
+INFO  [2025-07-28 16:39:24] Inputs/Assumptions used in this test -----
+
+INFO  [2025-07-28 16:39:24] Commissioned UDA:  81,404,347
+INFO  [2025-07-28 16:39:24] Commissioned spend:  £2,767,747,798
+INFO  [2025-07-28 16:39:24] Projected UDA:  71,729,056
+INFO  [2025-07-28 16:39:24] Average £ per UDA:  34
+INFO  [2025-07-28 16:39:24] FY used for total UDA delivery:  2023/2024
+INFO  [2025-07-28 16:39:24] Total UDA delivery in selected FY:  72,502,209
+
+INFO  [2025-07-28 16:39:24] Scenario tested in post-model:  Urgent Care scenario-----
+INFO  [2025-07-28 16:39:24] Impacts on [urgent] segment, changing COT from 3351516 to 4051516; 
+
+INFO  [2025-07-28 16:39:24] 
+INFO  [2025-07-28 16:39:24] Impacts on [urgent] segment, changing average cost per COT from £40.8 to £75; 
+
+INFO  [2025-07-28 16:39:24] Behaviours changes applied to 10 years: 
+INFO  [2025-07-28 16:39:24] Assuming % new band 2/3 that are normal: 40%
+INFO  [2025-07-28 16:39:24] Assuming % of unmodelled activities: 3%
+INFO  [2025-07-28 16:39:24] Assuming inflation from 2027/28: 1.043
+
+INFO  [2025-07-28 16:39:24] Please refer to [Input_for_test.xlsx] to view full list of inputs that have been used in this test.
+
+INFO  [2025-07-28 16:39:24] Test end !!!! Outputs from this test is saved in [Model_outputs.xlsx]
+INFO  [2025-07-28 16:40:01] ---------------------------------------------------------------------
+INFO  [2025-07-28 16:40:01] Inputs/Assumptions used in this test -----
+
+INFO  [2025-07-28 16:40:01] Commissioned UDA:  81,404,347
+INFO  [2025-07-28 16:40:01] Commissioned spend:  £2,767,747,798
+INFO  [2025-07-28 16:40:01] Projected UDA:  71,729,056
+INFO  [2025-07-28 16:40:01] Average £ per UDA:  34
+INFO  [2025-07-28 16:40:01] FY used for total UDA delivery:  2023/2024
+INFO  [2025-07-28 16:40:01] Total UDA delivery in selected FY:  72,502,209
+
+INFO  [2025-07-28 16:40:01] Scenario tested in post-model:  Everything else scenario-----
+INFO  [2025-07-28 16:40:02] 
+INFO  [2025-07-28 16:40:02] 
+INFO  [2025-07-28 16:40:02] 
+INFO  [2025-07-28 16:40:02] Behaviours changes applied to 10 years: 
+INFO  [2025-07-28 16:40:02] Assuming % new band 2/3 that are normal: 40%
+INFO  [2025-07-28 16:40:02] Assuming % of unmodelled activities: 3%
+INFO  [2025-07-28 16:40:02] Assuming inflation from 2027/28: 1.043
+
+INFO  [2025-07-28 16:40:02] Please refer to [Input_for_test.xlsx] to view full list of inputs that have been used in this test.
+
+INFO  [2025-07-28 16:40:02] Test end !!!! Outputs from this test is saved in [Model_outputs.xlsx]
+INFO  [2025-07-28 16:41:33] ---------------------------------------------------------------------
+INFO  [2025-07-28 16:41:33] Inputs/Assumptions used in this test -----
+
+INFO  [2025-07-28 16:41:33] Commissioned UDA:  81,404,347
+INFO  [2025-07-28 16:41:33] Commissioned spend:  £2,767,747,798
+INFO  [2025-07-28 16:41:33] Projected UDA:  71,729,056
+INFO  [2025-07-28 16:41:33] Average £ per UDA:  34
+INFO  [2025-07-28 16:41:33] FY used for total UDA delivery:  2023/2024
+INFO  [2025-07-28 16:41:33] Total UDA delivery in selected FY:  72,502,209
+
+INFO  [2025-07-28 16:41:33] Scenario tested in post-model:  All high needs scenario-----
+INFO  [2025-07-28 16:41:33] 
+INFO  [2025-07-28 16:41:34] Impacts on [new_hn_pat] segment, changing PCR fee per COT from £70.3 to £68.4; 
+
+INFO  [2025-07-28 16:41:34] Impacts on [new_hn_pat] segment, changing average cost per COT from £342 to £527.6; 
 Impacts on [perio] segment, changing average cost per COT from £102 to £238; 
-Impacts on [urgent] segment, changing average cost per COT from £40.8 to £75; 
 
-INFO  [2025-07-24 16:06:40] Behaviours changes applied to 10 years: 
-INFO  [2025-07-24 16:06:40] Assuming % new band 2/3 that are normal: 40%
-INFO  [2025-07-24 16:06:40] Assuming % of unmodelled activities: 3%
-INFO  [2025-07-24 16:06:40] Assuming inflation from 2027/28: 1.043
+INFO  [2025-07-28 16:41:34] Behaviours changes applied to 10 years: 
+INFO  [2025-07-28 16:41:34] Assuming % new band 2/3 that are normal: 40%
+INFO  [2025-07-28 16:41:34] Assuming % of unmodelled activities: 3%
+INFO  [2025-07-28 16:41:34] Assuming inflation from 2027/28: 1.043
 
-INFO  [2025-07-24 16:06:40] Please refer to [Input_for_test.xlsx] to view full list of inputs that have been used in this test.
+INFO  [2025-07-28 16:41:34] Please refer to [Input_for_test.xlsx] to view full list of inputs that have been used in this test.
 
-INFO  [2025-07-24 16:06:40] Test end !!!! Outputs from this test is saved in [Model_outputs.xlsx]
-INFO  [2025-07-24 17:49:57] ---------------------------------------------------------------------
-INFO  [2025-07-24 17:49:57] Inputs/Assumptions used in this test
-
-INFO  [2025-07-24 17:49:57] Commissioned UDA:  81,404,347
-INFO  [2025-07-24 17:49:57] Commissioned spend:  £2,767,747,798
-INFO  [2025-07-24 17:49:57] Projected UDA:  71,729,056
-INFO  [2025-07-24 17:49:57] Average £ per UDA:  34
-INFO  [2025-07-24 17:49:57] FY used for total UDA delivery:  2023/2024
-INFO  [2025-07-24 17:49:57] Total UDA delivery in selected FY:  72,502,209
-
-INFO  [2025-07-24 17:49:57] Scenario tested in post-model:  All policies scenario
-INFO  [2025-07-24 17:49:59] Impacts on [urgent] segment, changing COT from 3351516 to 4051516; 
-
-INFO  [2025-07-24 17:49:59] Impacts on [new_hn_pat] segment, changing PCR fee per COT from £70.3 to £68.4; 
-
-INFO  [2025-07-24 17:49:59] Impacts on [new_hn_pat] segment, changing average cost per COT from £342 to £527.6; 
-Impacts on [perio] segment, changing average cost per COT from £102 to £238; 
-Impacts on [urgent] segment, changing average cost per COT from £40.8 to £75; 
-
-INFO  [2025-07-24 17:49:59] Behaviours changes applied to 10 years: 
-INFO  [2025-07-24 17:49:59] Assuming % new band 2/3 that are normal: 40%
-INFO  [2025-07-24 17:49:59] Assuming % of unmodelled activities: 3%
-INFO  [2025-07-24 17:49:59] Assuming inflation from 2027/28: 1.043
-
-INFO  [2025-07-24 17:49:59] Please refer to [Input_for_test.xlsx] to view full list of inputs that have been used in this test.
-
-INFO  [2025-07-24 17:49:59] Test end !!!! Outputs from this test is saved in [Model_outputs.xlsx]
-INFO  [2025-07-24 18:04:03] ---------------------------------------------------------------------
-INFO  [2025-07-24 18:04:03] Inputs/Assumptions used in this test
-
-INFO  [2025-07-24 18:04:03] Commissioned UDA:  81,404,347
-INFO  [2025-07-24 18:04:03] Commissioned spend:  £2,767,747,798
-INFO  [2025-07-24 18:04:03] Projected UDA:  71,729,056
-INFO  [2025-07-24 18:04:03] Average £ per UDA:  34
-INFO  [2025-07-24 18:04:03] FY used for total UDA delivery:  2023/2024
-INFO  [2025-07-24 18:04:03] Total UDA delivery in selected FY:  72,502,209
-
-INFO  [2025-07-24 18:04:03] Scenario tested in post-model:  All policies scenario
-INFO  [2025-07-24 18:04:03] Impacts on [urgent] segment, changing COT from 3351516 to 4051516; 
-
-INFO  [2025-07-24 18:04:03] Impacts on [new_hn_pat] segment, changing PCR fee per COT from £70.3 to £68.4; 
-
-INFO  [2025-07-24 18:04:03] Impacts on [new_hn_pat] segment, changing average cost per COT from £342 to £527.6; 
-Impacts on [perio] segment, changing average cost per COT from £102 to £238; 
-Impacts on [urgent] segment, changing average cost per COT from £40.8 to £75; 
-
-INFO  [2025-07-24 18:04:03] Behaviours changes applied to 10 years: 
-INFO  [2025-07-24 18:04:03] Assuming % new band 2/3 that are normal: 40%
-INFO  [2025-07-24 18:04:03] Assuming % of unmodelled activities: 3%
-INFO  [2025-07-24 18:04:03] Assuming inflation from 2027/28: 1.043
-
-INFO  [2025-07-24 18:04:03] Please refer to [Input_for_test.xlsx] to view full list of inputs that have been used in this test.
-
-INFO  [2025-07-24 18:04:03] Test end !!!! Outputs from this test is saved in [Model_outputs.xlsx]
+INFO  [2025-07-28 16:41:34] Test end !!!! Outputs from this test is saved in [Model_outputs.xlsx]

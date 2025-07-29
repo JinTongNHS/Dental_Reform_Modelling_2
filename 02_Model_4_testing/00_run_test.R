@@ -4,7 +4,6 @@ source("02_Model_4_testing/01_read_source_data.R")
 source("02_Model_4_testing/02_yr0_model.R")
 source("02_Model_4_testing/03_trend_model.R")
 
-
 #write modelling outputs into a single excel file
 dataset_names<- list( 'Test_time_stamp'=Sys.time()
                     ,'Year0_Pre_Change'=get_yr0_pre_model()
@@ -13,6 +12,8 @@ dataset_names<- list( 'Test_time_stamp'=Sys.time()
                      ,'Trend_%_of_total_UDA'=`trend_%_UDA`()
                     ,'Real_spend_DoNothing'=trend_seg_spend("do nothing")
                     ,'Real_spend_PolicyChange'=trend_seg_spend("change")
+                    ,'Trend_COT'=trend_COT()
+                    ,'Trend_PCR'=trend_PCR()
                      )
 
 openxlsx::write.xlsx(dataset_names, file = paste0('02_Model_4_testing/Model_outputs.xlsx')) 
