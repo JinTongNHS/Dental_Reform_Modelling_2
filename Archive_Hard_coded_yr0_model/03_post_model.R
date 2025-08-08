@@ -12,8 +12,8 @@ scenario_df<-scenario_df%>%mutate(Scenario_short=case_when(scenario_id==1~ "High
 
 scenario=scenario_df$scenario_id
 
-source("01_Hard_coded_model/02a_hn_patient.R")
-source("01_Hard_coded_model/02b_perio_&_urgent.R")
+source("Archive_Hard_coded_yr0_model/02a_hn_patient.R")
+source("Archive_Hard_coded_yr0_model/02b_perio_&_urgent.R")
 
 
 post_model<-function(s=1){
@@ -107,4 +107,4 @@ dataset_names<- list('Year0_Pre_Change'=pre_model
 )
 
 
-openxlsx::write.xlsx(dataset_names, file = paste0('01_Hard_coded_model/Model_outputs_fixed.xlsx')) 
+openxlsx::write.xlsx(dataset_names, file = paste0('Archive_Hard_coded_yr0_model/Model_outputs_fixed.xlsx')) 

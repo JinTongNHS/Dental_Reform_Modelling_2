@@ -13,15 +13,16 @@ library(magrittr)
 library(openxlsx)
 
 #define function to extract individual assumptions
-assumption<-read.xlsx("02_Model_4_testing/Model_inputs.xlsx", sheet = "Assumptions", startRow = 1)
-get_Var<-function(Parameter_ID="1"){
+assumption<-read.xlsx("DRM2/Model_inputs.xlsx", sheet = "Assumptions", startRow = 1)
+get_assumption<-function(Parameter_ID="1"){
   v=(assumption%>%filter(id==Parameter_ID))$Value
   v
 }
 
+FY=get_assumption(5) # Latest FY in Dental Stats
 
 #define function to extract testing inputs for patient segments
-seg_input<-read.xlsx("02_Model_4_testing/Model_inputs.xlsx", sheet = "Patient_Segment", startRow = 3)
+seg_input<-read.xlsx("DRM2/Model_inputs.xlsx", sheet = "Patient_Segment", startRow = 3) #Using "All policies" scenario by default
 
 #Excel [Scenario_tested.xlsx] contains all scenarios tested in orinigal excel model
 #seg_input<-read.xlsx("Scenario_tested.xlsx", sheet = "All policies", startRow = 3)
@@ -34,67 +35,33 @@ seg_input<-read.xlsx("02_Model_4_testing/Model_inputs.xlsx", sheet = "Patient_Se
 #seg_input<-read.xlsx("Scenario_tested.xlsx", sheet = "All high needs", startRow = 3)
 
 seg<-unique(seg_input$Seg_short)
-model<-unique(seg_input$Model)
+#model<-unique(seg_input$Model)
 
-get_seg_input<-function(m="pre-model",s=1){
-  data<- seg_input%>%
-    filter(Seg_short==seg[s])%>%
-    filter(Model==m)
-  
-  data
-  
-}
 
 #identify changes in input files - to be used in the log file to record policy changes being tested
-get_cot_change<-function(){
-  change<-NULL
-  for (s in (1:length(seg))){
+get_policy_change<-function(){
+ change=NULL
+ 
+  for (s in seg){
     data<- seg_input%>%
-    filter(Seg_short==seg[s])
+    filter(Seg_short==s)
   
-  if(data$COT[data$`Model`== "post-model"] !=data$COT[data$`Model`== "pre-model"])
-  {message=paste0("Impacts on [", seg[s], "] segment, changing COT from ", round(data$COT[data$`Model`== "pre-model"],1), " to ", round(data$COT[data$`Model`== "post-model"],1), "; \n")}
-  else{message=""}
-    change<-append(change, message)
-  }
-  change
-  }
+ change1= ifelse(data$COT[data$`Model`== "post-model"] !=data$COT[data$`Model`== "pre-model"], paste0("Impacts on [", s, "] segment, changing COT from ", round(data$COT[data$`Model`== "pre-model"],1), " to ", round(data$COT[data$`Model`== "post-model"],1), "; \n"), "\n")
+ change2= ifelse(data$PCR_per_COT[data$`Model`== "post-model"] !=data$PCR_per_COT[data$`Model`== "pre-model"], paste0("Impacts on [", s, "] segment, changing PCR fee per COT from £", round(data$PCR_per_COT[data$`Model`== "pre-model"],1), " to £", round(data$PCR_per_COT[data$`Model`== "post-model"],1), "; \n"),"")
+ change3= ifelse(data$Cost_per_COT[data$`Model`== "post-model"] !=data$Cost_per_COT[data$`Model`== "pre-model"], paste0("Impacts on [", s, "] segment, changing average cost per COT from £", round(data$Cost_per_COT[data$`Model`== "pre-model"],1), " to £", round(data$Cost_per_COT[data$`Model`== "post-model"],1), "; \n"), "")
 
-get_pcr_change<-function(){
-  change<-NULL
-  for (s in (1:length(seg))){
-  data<- seg_input%>%
-    filter(Seg_short==seg[s])
-  
-  if(data$PCR_per_COT[data$`Model`== "post-model"] !=data$PCR_per_COT[data$`Model`== "pre-model"])
-  {message=paste0("Impacts on [", seg[s], "] segment, changing PCR fee per COT from £", round(data$PCR_per_COT[data$`Model`== "pre-model"],1), " to £", round(data$PCR_per_COT[data$`Model`== "post-model"],1), "; \n")}
-  else{message=""}
-  change<-append(change, message)
+ change<-paste(change, change1, change2, change3)
   }
-  change
-}
-
-get_cost_change<-function(){
-  change<-NULL
-  for (s in (1:length(seg))){
-  data<- seg_input%>%
-    filter(Seg_short==seg[s])
-  
-  if(data$Cost_per_COT[data$`Model`== "post-model"] !=data$Cost_per_COT[data$`Model`== "pre-model"])
-  {message=paste0("Impacts on [", seg[s], "] segment, changing average cost per COT from £", round(data$Cost_per_COT[data$`Model`== "pre-model"],1), " to £", round(data$Cost_per_COT[data$`Model`== "post-model"],1), "; \n")}
-  else{message=""}
-  
-  change<-append(change, message)
-  }
-  change
+ 
+ change
 }
 
 
 #define function to extract UDA for each segment from dental stats 
-dental_stats_2c<-read.xlsx("02_Model_4_testing/Model_inputs.xlsx", sheet = "dental_stats_2c", startRow = 5)
+dental_stats_2c<-read.xlsx("DRM2/Model_inputs.xlsx", sheet = "dental_stats_2c", startRow = 5)
 
-get_uda<-function(FY="2023/2024", patient="Child",b="Band.1"){
-  if(patient=="Child"){
+get_uda<-function(child=TRUE,b="Band.1"){
+  if(child==TRUE){
     data<-dental_stats_2c %>% 
       filter(`Financial.Year`==FY, `Patient.Type`== "Child")%>%
       select(all_of(b))}
@@ -108,11 +75,12 @@ get_uda<-function(FY="2023/2024", patient="Child",b="Band.1"){
 
 
 #define function to extract PCR total for each segment from dental stats 
-dental_stats_6a<-read.xlsx("02_Model_4_testing/Model_inputs.xlsx", sheet = "dental_stats_6a", startRow = 5)
+dental_stats_6a<-read.xlsx("DRM2/Model_inputs.xlsx", sheet = "dental_stats_6a", startRow = 5)
 
 get_pcr_total<-function( b=c("Band.1")){
   data<- dental_stats_6a %>% 
-    filter( `Financial.Year`== "inflated to 2024/25 - 4%")%>% ## this is hard coded, may need to be replaced
+    filter(`Financial.Year`== FY)%>% #select latest FY 
+    mutate(across(where(is.numeric), ~. *(1+as.numeric(get_assumption(10)))))%>% # uplift with any inflation
     select(all_of(b))
   
   v=sum(data)
@@ -121,13 +89,16 @@ get_pcr_total<-function( b=c("Band.1")){
 
 
 #define function to extract testing inputs for patient segments
-behaviour_input<-read.xlsx("02_Model_4_testing/Model_inputs.xlsx", sheet = "Behaviour_Change", startRow = 1)
-get_behaviour<-function(i=1){
+behaviour_input<-read.xlsx("DRM2/Model_inputs.xlsx", sheet = "Behaviour_Change", startRow = 1)
+get_behaviour<-function(name="yr0_return_b1"){
   trend_input<-behaviour_input%>%
-    filter(id==i)%>%collect()
+    filter(short_name==name)%>%collect()
   
   trend_input
 }
 
 #read latest discount index values
-discount_input<-read.xlsx("02_Model_4_testing/Model_inputs.xlsx", sheet = "Discount_index", startRow = 1)
+discount_input<-read.xlsx("DRM2/Model_inputs.xlsx", sheet = "Discount_index", startRow = 1)
+
+#define function to summarise behaviour impacts to be used in log file
+
