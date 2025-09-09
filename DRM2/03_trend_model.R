@@ -200,44 +200,44 @@ trend_seg_spend<-function(DoNothing=TRUE){
   model
 }
 
-# trend_COT<-function(){
-#   model<-get_yr0_pre_model()%>%
-#     select(Seg_short,`yr0_pre_COT`=COT)%>%
-#     left_join(get_yr0_post_model()%>% select(Seg_short,`yr0_post_COT`=COT), "Seg_short")%>%
-#     filter(Seg_short!="Unused_UDA")%>%
-#     collect()
-#   #use year0 post change cOT figures as the starting values to apply behaviour change impact where needed. 
-#   for (i in (1:n_year) ){
-#     model<-model%>%mutate(!!paste0("year",i):=as.numeric(`yr0_post_COT`))
-#   }
-#   
-#   rownames(model)<-model$Seg_short
-#   
-#   #replacing starting values where segments affected by behaviour changes. The ones not affected remain the same as yr0 post change values.
-#   for (i in (1:n_year) ){
-#     model["new_b1", period[i]]<- model["new_b1", period[i]]*get_behaviour("yr0_new_b1")[1,period[i]] #behavior changes 2 impact on new band 1 segment
-#     model["return_b1", period[i]]<- model["return_b1", period[i]]-model["return_b1", period[i]]*(1-get_behaviour("yr0_return_b1")[1,period[i]])#behavior changes 1 impact on returning band 1 segment
-#     model["new_hn_pat", period[i]]<-model["new_hn_pat", period[i]]*(1+get_behaviour("increased_new_b23")[1,period[i]]) #number 4 in behavior input is reluctant increase in new band 2/3
-#     model["new_b23", period[i]]<-model["new_b23", period[i]]*(1+get_behaviour("increased_new_b23")[1,period[i]]) #number 4 in behavior input is reluctant increase in new band 2/3
-#   }
-#   
-#   model[,-c(1)]<-lapply(model[,-c(1)], as.numeric)
-#   total<-colSums(subset(model, select=(-Seg_short)))
-#   model<-rbind(model, c("Total COT", total), setNames(as.list(rep(NA, ncol(model))), names(model)))
-#   
-#   model["1", "Seg_short"]<- "Change in COT (compared to Year0 PreChange total COT)"
-#   model["1", "yr0_pre_COT"]<- ""
-#   model[,-c(1)]<-lapply(model[,-c(1)], as.numeric)
-#   model["1", "yr0_post_COT"]<- model["10", "yr0_post_COT"]- model["10", "yr0_pre_COT"]
-#   
-#   for (i in (1:n_year) ){
-#     model["1", period[i]]<- model["10", period[i]]- model["10", "yr0_pre_COT"]
-#   }
-#    
-#   model[,-c(1)]<-lapply(model[,-c(1)], as.numeric)       
-#  model
-# 
-# }
+trend_COT<-function(){
+  model<-get_yr0_pre_model()%>%
+    select(Seg_short,`yr0_pre_COT`=COT)%>%
+    left_join(get_yr0_post_model()%>% select(Seg_short,`yr0_post_COT`=COT), "Seg_short")%>%
+    filter(Seg_short!="Unused_UDA")%>%
+    collect()
+  #use year0 post change cOT figures as the starting values to apply behaviour change impact where needed.
+  for (i in (1:n_year) ){
+    model<-model%>%mutate(!!paste0("year",i):=as.numeric(`yr0_post_COT`))
+  }
+
+  rownames(model)<-model$Seg_short
+
+  #replacing starting values where segments affected by behaviour changes. The ones not affected remain the same as yr0 post change values.
+  for (i in (1:n_year) ){
+    model["new_b1", period[i]]<- model["new_b1", period[i]]*get_behaviour("yr0_new_b1")[1,period[i]] #behavior changes 2 impact on new band 1 segment
+    model["return_b1", period[i]]<- model["return_b1", period[i]]-model["return_b1", period[i]]*(1-get_behaviour("yr0_return_b1")[1,period[i]])#behavior changes 1 impact on returning band 1 segment
+    model["new_hn_pat", period[i]]<-model["new_hn_pat", period[i]]*(1+get_behaviour("increased_new_b23")[1,period[i]]) #number 4 in behavior input is reluctant increase in new band 2/3
+    model["new_b23", period[i]]<-model["new_b23", period[i]]*(1+get_behaviour("increased_new_b23")[1,period[i]]) #number 4 in behavior input is reluctant increase in new band 2/3
+  }
+
+  model[,-c(1)]<-lapply(model[,-c(1)], as.numeric)
+  total<-colSums(subset(model, select=(-Seg_short)))
+  model<-rbind(model, c("Total COT", total), setNames(as.list(rep(NA, ncol(model))), names(model)))
+
+  model["1", "Seg_short"]<- "Change in COT (compared to Year0 PreChange total COT)"
+  model["1", "yr0_pre_COT"]<- ""
+  model[,-c(1)]<-lapply(model[,-c(1)], as.numeric)
+  model["1", "yr0_post_COT"]<- model["10", "yr0_post_COT"]- model["10", "yr0_pre_COT"]
+
+  for (i in (1:n_year) ){
+    model["1", period[i]]<- model["10", period[i]]- model["10", "yr0_pre_COT"]
+  }
+
+  model[,-c(1)]<-lapply(model[,-c(1)], as.numeric)
+ model
+
+}
 # 
 # trend_PCR<-function(){
 #   model<-get_yr0_pre_model()%>%

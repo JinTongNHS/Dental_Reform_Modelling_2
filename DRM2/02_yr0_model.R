@@ -8,9 +8,10 @@ commisioned_spend=commisioned_uda*avg_pay_UDA
 projected_uda= as.numeric(get_assumption(3))  #Projected UDAs
 spend_projected_uda=projected_uda*avg_pay_UDA 
 unused_uda= 1- as.numeric(get_assumption(4)) #unused (%) UDA in 2024/25
-total_uda<- get_uda(TRUE, "Total")+get_uda(FALSE, "Total")
-Scenario_name<-seg_input[nrow(seg_input), ncol(seg_input)] #Get the short label/name for policy being tested in each run
-b_23_name<-c("Band.2", "Band.2a", "Band.2b", "Band.2c", "Band.3") #a label for all band 2 &3
+#total_uda<- get_uda(TRUE, "total")+get_uda(FALSE, "total")
+geo_level<-ifelse(get_assumption(100)=="England", paste0(get_assumption(99), " level"), paste0("Regional level - ",get_assumption(100)))
+Scenario_name<-seg_input[nrow(seg_input), ncol(seg_input)-1] #Get the short label/name for policy being tested in each run
+b_23_name<-c("band.2", "band.2a", "band.2b", "band.2c", "band.3") #a label for all band 2 &3
 
 get_yr0_pre_model<-function(){
   
@@ -18,39 +19,43 @@ model<-seg_input%>%
   filter(Model=="pre-model")%>%
   select(-`Comments`)%>%
   mutate(`Total_PCR`=`COT`*`PCR_per_COT`)%>%
-  #Calculate % of total spend for each segment
-  mutate(`Total_spend_%`=case_when(`Seg_short`== "new_b1"~ (`COT`/commisioned_uda),
-                                   `Seg_short`== "new_b23"|`Seg_short`== "perio"|`Seg_short`== "new_hn_pat"~ (`COT`*`Cost_per_COT`/commisioned_spend),
-                                   `Seg_short`== "child_b1"~ (get_uda(TRUE, "Band.1")/total_uda*(spend_projected_uda/commisioned_spend)),
-                                   `Seg_short`== "child_b23"~ (get_uda( TRUE, b_23_name)/total_uda*(spend_projected_uda/commisioned_spend)),
-                                   `Seg_short`== "urgent"~ ((get_uda(TRUE, "Urgent")+get_uda(FALSE, "Urgent"))/total_uda*(1-unused_uda)),
-                                   `Seg_short`== "return_b23"~ ((get_uda(FALSE, b_23_name)+
-                                                                         get_uda(FALSE, "Free")+
-                                                                         get_uda(FALSE, "Regulation.11.Replacement.Appliance"))/total_uda
-                                                                      *(spend_projected_uda/commisioned_spend)), #this still includes new band2&3, perio and new high needs patients
-                                   `Seg_short`== "return_b1"~ (get_uda(FALSE, "Band.1")/total_uda*(spend_projected_uda/commisioned_spend) ) #this still includes new band 1
-  ))%>%
+  mutate(`Total_spend_%`=`COT`*`Cost_per_COT`/commisioned_spend)%>%   #Calculate % of total spend and Total PCR for each segment using the simple method - The complicated one used in orinigal model has been commented out
   collect()
+  
+#   Original method of calculating Total_spend_% below 
+#   mutate(`Total_spend_%`=case_when(`Seg_short`== "new_b1"~ (`COT`/commisioned_uda),
+#                                    `Seg_short`== "new_b23"|`Seg_short`== "perio"|`Seg_short`== "new_hn_pat"~ (`COT`*`Cost_per_COT`/commisioned_spend),
+#                                    `Seg_short`== "child_b1"~ (get_uda(TRUE, "band.1")/total_uda*(spend_projected_uda/commisioned_spend)),
+#                                    `Seg_short`== "child_b23"~ (get_uda( TRUE, b_23_name)/total_uda*(spend_projected_uda/commisioned_spend)),
+#                                    `Seg_short`== "urgent"~ ((get_uda(TRUE, "urgent")+get_uda(FALSE, "urgent"))/total_uda*(1-unused_uda)),
+#                                    `Seg_short`== "return_b23"~ ((get_uda(FALSE, b_23_name)+
+#                                                                          get_uda(FALSE, "free")+
+#                                                                          get_uda(FALSE, "regulation.11.replacement.appliance"))/total_uda
+#                                                                       *(spend_projected_uda/commisioned_spend)), #this still includes new band2&3, perio and new high needs patients
+#                                    `Seg_short`== "return_b1"~ (get_uda(FALSE, "band.1")/total_uda*(spend_projected_uda/commisioned_spend) ),  #this still includes new band 1
+#                                    TRUE ~ (`COT`*`Cost_per_COT`/commisioned_spend) #for any potential new segment
+#   ))%>%
+#   collect()
+# 
+# #excluding new patients segs in returning ones
+# model$`Total_spend_%`[model$`Seg_short`== "return_b1"]=  (model$`Total_spend_%`[model$`Seg_short`== "return_b1"]- model$`Total_spend_%`[model$`Seg_short`== "new_b1"])
+# model$`Total_spend_%`[model$`Seg_short`== "return_b23"]=  (model$`Total_spend_%`[model$`Seg_short`== "return_b23"]
+#                                                            - model$`Total_spend_%`[model$`Seg_short`== "new_b23"]
+#                                                            - model$`Total_spend_%`[model$`Seg_short`== "new_hn_pat"]
+#                                                            - model$`Total_spend_%`[model$`Seg_short`== "perio"])
 
-#excluding new patients segs in returning ones
-model$`Total_spend_%`[model$`Seg_short`== "return_b1"]=  (model$`Total_spend_%`[model$`Seg_short`== "return_b1"]- model$`Total_spend_%`[model$`Seg_short`== "new_b1"])
-model$`Total_spend_%`[model$`Seg_short`== "return_b23"]=  (model$`Total_spend_%`[model$`Seg_short`== "return_b23"]
-                                                           - model$`Total_spend_%`[model$`Seg_short`== "new_b23"]
-                                                           - model$`Total_spend_%`[model$`Seg_short`== "new_hn_pat"]
-                                                           - model$`Total_spend_%`[model$`Seg_short`== "perio"])
 
-
-model$`Total_PCR`[model$`Seg_short`== "return_b1"]=   (get_pcr_total("Band.1")- model$`Total_PCR`[model$`Seg_short`== "new_b1"])
-model$`Total_PCR`[model$`Seg_short`== "return_b23"]=  (get_pcr_total(b_23_name)
-                                                                     +get_pcr_total("Regulation.11.Replacement.Appliance")
-                                                                     - model$`Total_PCR`[model$`Seg_short`== "new_b23"]
-                                                                     - model$`Total_PCR`[model$`Seg_short`== "new_hn_pat"]
-                                                                     - model$`Total_PCR`[model$`Seg_short`== "perio"])
+# model$`Total_PCR`[model$`Seg_short`== "return_b1"]= (get_pcr_total("band.1")- model$`Total_PCR`[model$`Seg_short`== "new_b1"])
+# model$`Total_PCR`[model$`Seg_short`== "return_b23"]=  (get_pcr_total(b_23_name)
+#                                                                      +get_pcr_total("regulation.11.replacement.appliance")
+#                                                                      - model$`Total_PCR`[model$`Seg_short`== "new_b23"]
+#                                                                      - model$`Total_PCR`[model$`Seg_short`== "new_hn_pat"]
+#                                                                      - model$`Total_PCR`[model$`Seg_short`== "perio"])
 
 
 
 unused_uda_post=1-sum(model$`Total_spend_%`, na.rm=T)
-model[nrow(model) + 1, ] <- c("pre-model" ,"Unused_UDA","" ,"" ,"","","", unused_uda_post)
+model[nrow(model) + 1, ] <- c("pre-model" ,"Unused_UDA","" ,"" ,"","","","", unused_uda_post)
 
 model<-model%>%mutate(`Total_spend_% (chr)`=label_percent()(as.numeric(model$`Total_spend_%`)))
 
@@ -84,7 +89,7 @@ get_yr0_post_model<-function(){
   }
  
   unused_uda_post=1-sum(as.numeric(model$`Total_spend_%`), na.rm=T)
-  model[nrow(model) + 1, ] <- c("post-model","Unused_UDA","" ,"" ,"","","", unused_uda_post)
+  model[nrow(model) + 1, ] <- c("post-model","Unused_UDA","" ,"" ,"","","","", unused_uda_post)
   
   model<-model%>%mutate(`Total_spend_% (chr)`=label_percent()(as.numeric(model$`Total_spend_%`)))
   
