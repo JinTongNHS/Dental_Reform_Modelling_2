@@ -4,7 +4,6 @@
 # 2. [Patient_Segment] tab lists all patients segments covered in this modelling. Column [D] to [F] allow different inputs values to be tested for each segment. 
 # 3. [Behaviour_Change] tab allows inputs to be tested for potential behaviour impacts
 # 4. [Discount_index] can be replaced with latest published figures once available
-# 5. [dental_stats_2c] & [dental_stats_6a] can be replaced with latest published figures once available
 
 # All source data are extracted using defined functions below
 
@@ -23,6 +22,7 @@ FY=get_assumption(5) # Latest FY in Dental Stats
 
 #define function to extract testing inputs for patient segments
 seg_input<-read.xlsx("DRM2/Model_inputs.xlsx", sheet = "Patient_Segment", startRow = 3) #Using "All policies" scenario by default
+seg_input<-seg_input%>%filter(`Region`==get_assumption(100))
 
 #Excel [Scenario_tested.xlsx] contains all scenarios tested in orinigal excel model
 #seg_input<-read.xlsx("Scenario_tested.xlsx", sheet = "All policies", startRow = 3)
@@ -33,6 +33,7 @@ seg_input<-read.xlsx("DRM2/Model_inputs.xlsx", sheet = "Patient_Segment", startR
 #seg_input<-read.xlsx("Scenario_tested.xlsx", sheet = "Urgent Care", startRow = 3)
 #seg_input<-read.xlsx("Scenario_tested.xlsx", sheet = "Everything else", startRow = 3)
 #seg_input<-read.xlsx("Scenario_tested.xlsx", sheet = "All high needs", startRow = 3)
+#seg_input<-read.xlsx("Scenario_tested.xlsx", sheet = "Testing new segment", startRow = 3)
 
 seg<-unique(seg_input$Seg_short)
 #model<-unique(seg_input$Model)
@@ -57,35 +58,36 @@ get_policy_change<-function(){
 }
 
 
-#define function to extract UDA for each segment from dental stats 
-dental_stats_2c<-read.xlsx("DRM2/Model_inputs.xlsx", sheet = "dental_stats_2c", startRow = 5)
+### DentalStats_2c ----
+#define function to extract UDA for each segment from dental stats - commented out to use simplified calculation approach
+# dental_stats_2c<-read.xlsx("DRM2/Model_inputs.xlsx", sheet = "dental_stats_2c", startRow = 6)
+# names(dental_stats_2c)<- tolower(names(dental_stats_2c))
+# get_uda<-function(child=TRUE,b="band.1"){
+#   if(child==TRUE){
+#     data<-dental_stats_2c %>% 
+#       filter(`financial.year`==FY, `patient.type`== "Child")%>%
+#       select(all_of(b))}
+#   else{data<-dental_stats_2c %>% 
+#     filter(`financial.year`==FY, `patient.type`!= "Child")%>%
+#     select(all_of(b))}
+#   
+#   v=sum(data)
+#   v
+# }
 
-get_uda<-function(child=TRUE,b="Band.1"){
-  if(child==TRUE){
-    data<-dental_stats_2c %>% 
-      filter(`Financial.Year`==FY, `Patient.Type`== "Child")%>%
-      select(all_of(b))}
-  else{data<-dental_stats_2c %>% 
-    filter(`Financial.Year`==FY, `Patient.Type`!= "Child")%>%
-    select(all_of(b))}
-  
-  v=sum(data)
-  v
-}
-
-
-#define function to extract PCR total for each segment from dental stats 
-dental_stats_6a<-read.xlsx("DRM2/Model_inputs.xlsx", sheet = "dental_stats_6a", startRow = 5)
-
-get_pcr_total<-function( b=c("Band.1")){
-  data<- dental_stats_6a %>% 
-    filter(`Financial.Year`== FY)%>% #select latest FY 
-    mutate(across(where(is.numeric), ~. *(1+as.numeric(get_assumption(10)))))%>% # uplift with any inflation
-    select(all_of(b))
-  
-  v=sum(data)
-  v
-}
+### Dentalstats_6a ----
+#define function to extract PCR total for each segment from dental stats - commented out to use simplified calculation approach
+# dental_stats_6a<-read.xlsx("DRM2/Model_inputs.xlsx", sheet = "dental_stats_6a", startRow = 6)
+# names(dental_stats_6a)<- tolower(names(dental_stats_6a))
+# get_pcr_total<-function( b=c("band.1")){
+#   data<- dental_stats_6a %>% 
+#     filter(`financial.year`== FY)%>% #select latest FY 
+#     mutate(across(where(is.numeric), ~. *(1+as.numeric(get_assumption(10)))))%>% # uplift with any inflation
+#     select(all_of(b))
+#   
+#   v=sum(data)
+#   v
+# }
 
 
 #define function to extract testing inputs for patient segments
