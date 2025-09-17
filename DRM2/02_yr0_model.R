@@ -8,7 +8,6 @@ commisioned_spend=commisioned_uda*avg_pay_UDA
 projected_uda= as.numeric(get_assumption(3))  #Projected UDAs
 spend_projected_uda=projected_uda*avg_pay_UDA 
 unused_uda= 1- as.numeric(get_assumption(4)) #unused (%) UDA in 2024/25
-#total_uda<- get_uda(TRUE, "total")+get_uda(FALSE, "total")
 geo_level<-ifelse(get_assumption(100)=="England", paste0(get_assumption(99), " level"), paste0("Regional level - ",get_assumption(100)))
 Scenario_name<-seg_input[nrow(seg_input), ncol(seg_input)-1] #Get the short label/name for policy being tested in each run
 b_23_name<-c("band.2", "band.2a", "band.2b", "band.2c", "band.3") #a label for all band 2 &3
