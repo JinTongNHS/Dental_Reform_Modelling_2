@@ -4,7 +4,6 @@
 # 2. [Patient_Segment] tab lists all patients segments covered in this modelling. Column [D] to [F] allow different inputs values to be tested for each segment. 
 # 3. [Behaviour_Change] tab allows inputs to be tested for potential behaviour impacts
 # 4. [Discount_index] can be replaced with latest published figures once available
-# 5. [dental_stats_2c] & [dental_stats_6a] can be replaced with latest published figures once available
 
 # All source data are extracted using defined functions below
 
