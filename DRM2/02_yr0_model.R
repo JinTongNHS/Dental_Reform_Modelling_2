@@ -80,9 +80,13 @@ get_yr0_post_model<-function(){
     if(data$COT[data$`Model`== "post-model"] !=data$COT[data$`Model`== "pre-model"])
     {model$`Total_spend_%`[model$`Seg_short`== s]= (model$`COT`[model$`Seg_short`== s]* model$`Cost_per_COT`[model$`Seg_short`== s]/commisioned_spend)
      model$`Total_PCR`[model$`Seg_short`== s]= model$`COT`[model$`Seg_short`== s]* model$`PCR_per_COT`[model$`Seg_short`== s]}
-    else if(data$`Cost_per_COT`[data$`Model`== "post-model"] !=data$`Cost_per_COT`[data$`Model`== "pre-model"])   
+    else {}
+      
+    if(data$`Cost_per_COT`[data$`Model`== "post-model"] !=data$`Cost_per_COT`[data$`Model`== "pre-model"])   
       {model$`Total_spend_%`[model$`Seg_short`== s]= (model$`COT`[model$`Seg_short`== s]* model$`Cost_per_COT`[model$`Seg_short`== s]/commisioned_spend)}
-    else if(data$`PCR_per_COT`[data$`Model`== "post-model"] !=data$`PCR_per_COT`[data$`Model`== "pre-model"])   
+    else {}
+    
+    if(data$`PCR_per_COT`[data$`Model`== "post-model"] !=data$`PCR_per_COT`[data$`Model`== "pre-model"])   
     {model$`Total_PCR`[model$`Seg_short`== s]= model$`COT`[model$`Seg_short`== s]* model$`PCR_per_COT`[model$`Seg_short`== s]}
     else {}
   }
